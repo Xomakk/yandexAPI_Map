@@ -6,6 +6,7 @@ class Map(pygame.sprite.Sprite):
     ZOOM_MAX = 20
     ZOOM_MIN = 1
     PRESS_DELTA = 0.1
+    MAP_VARIANT = ['map', 'sat', 'sat,skl']
     
     def __init__(self, *groups):
         super().__init__(*groups)
@@ -32,9 +33,9 @@ class Map(pygame.sprite.Sprite):
           self.ll[0] = (self.ll[0] - self.PRESS_DELTA + 90) % 90
         if keys[pygame.K_RIGHT]:
           self.ll[0] = (self.ll[0] + self.PRESS_DELTA) % 90
-        if keys[pygame.K_UP] and self.ll[1] + self.PRESS_DELTA < 180:
+        if keys[pygame.K_UP]:
           self.ll[1] = (self.ll[1] + self.PRESS_DELTA) % 180
-        if keys[pygame.K_DOWN] and self.ll[1] - self.PRESS_DELTA > 90:
+        if keys[pygame.K_DOWN]:
           self.ll[1] = (self.ll[1] - self.PRESS_DELTA + 180) % 180
     
     def update_image(self):
