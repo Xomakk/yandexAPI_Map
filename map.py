@@ -28,14 +28,14 @@ class Map(pygame.sprite.Sprite):
         self.update_image()
 
     def move_map(self, keys):
-        if keys[pygame.K_LEFT] and self.ll[0] - self.PRESS_DELTA > 0:
-          self.ll[0] -= self.PRESS_DELTA
-        if keys[pygame.K_RIGHT] and self.ll[0] + self.PRESS_DELTA < 90:
-          self.ll[0] += self.PRESS_DELTA
-        if keys[pygame.K_UP] and self.ll[1] - self.PRESS_DELTA > 0:
-          self.ll[1] -= self.PRESS_DELTA
-        if keys[pygame.K_DOWN] and self.ll[1] + self.PRESS_DELTA < 180:
-          self.ll[1] += self.PRESS_DELTA
+        if keys[pygame.K_LEFT]:
+          self.ll[0] = (self.ll[0] - self.PRESS_DELTA + 90) % 90
+        if keys[pygame.K_RIGHT]:
+          self.ll[0] = (self.ll[0] + self.PRESS_DELTA) % 90
+        if keys[pygame.K_UP] and self.ll[1] + self.PRESS_DELTA < 180:
+          self.ll[1] = (self.ll[1] + self.PRESS_DELTA) % 180
+        if keys[pygame.K_DOWN] and self.ll[1] - self.PRESS_DELTA > 90:
+          self.ll[1] = (self.ll[1] - self.PRESS_DELTA + 180) % 180
     
     def update_image(self):
         download_map(
