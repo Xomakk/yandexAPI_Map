@@ -27,13 +27,19 @@ def reverse_geocode(ll):
 
 
 def download_map(ll=None, map_type='map', zoom=0, add_params=None, size=450):
-    map_req = f"http://static-maps.yandex.ru/1.x/?ll={ll}&l={map_type}&size={size},{size}"
+    params = {
+        'll': ll,
+        'l': map_type,
+        'z': zoom,
+        'size': f'{size},{size}' 
+    }
+    map_req = f"http://static-maps.yandex.ru/1.x"
     print(map_req)
 
     if add_params:
         map_req += '&' + add_params
 
-    response = requests.get(map_req)
+    response = requests.get(map_req, params)
 
     if not response:
         print('Ошибка выполнения запроса')
