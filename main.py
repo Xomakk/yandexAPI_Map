@@ -12,14 +12,14 @@ map_group = pygame.sprite.Group()
 map = Map(map_group)
 
 while True:
+    DISPLAYSURF.fill('white')
     for event in pygame.event.get():
-        DISPLAYSURF.fill('white')
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
-        if event.type == pygame.KEYUP:
+        if event.type == pygame.KEYDOWN:
             map.update()
 
-    map_group.draw(DISPLAYSURF, (0, 0))
+    map_group.draw(DISPLAYSURF)
 
     pygame.display.update()

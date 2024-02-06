@@ -19,8 +19,7 @@ class Map(pygame.sprite.Sprite):
             map_type = self.type
         )
 
-        self.image = pygame.image.load('map.png').convert()
-        self.rect = self.image.get_rect()
+        self.update_image()
 
     def update(self):
         keys = pygame.key.get_pressed()
@@ -32,3 +31,9 @@ class Map(pygame.sprite.Sprite):
         if keys[pygame.K_DOWN] and self.zoom > self.ZOOM_MIN:
             print(234)
             self.zoom -= 1
+
+        self.update_image()
+    
+    def update_image(self):
+        self.image = pygame.image.load('map.png').convert()
+        self.rect = self.image.get_rect()
