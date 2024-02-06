@@ -12,12 +12,6 @@ class Map(pygame.sprite.Sprite):
         self.ll = [82.924504, 55.030439]
         self.zoom = 3
         self.type = 'map'
-        
-        download_map(
-            ll=",".join(list(map(str, self.ll))),
-            zoom=self.zoom,
-            map_type = self.type
-        )
 
         self.update_image()
 
@@ -35,5 +29,11 @@ class Map(pygame.sprite.Sprite):
         self.update_image()
     
     def update_image(self):
+        download_map(
+            ll=",".join(list(map(str, self.ll))),
+            zoom=self.zoom,
+            map_type = self.type
+        )
+        
         self.image = pygame.image.load('map.png').convert()
         self.rect = self.image.get_rect()
