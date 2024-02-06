@@ -26,7 +26,7 @@ def reverse_geocode(ll):
 
 
 
-def download_map(ll=None, map_type='map', zoom=0, add_params=None, size=450):
+def download_map(ll=None, map_type='map', zoom=15, add_params=None, size=450):
     params = {
         'll': ll,
         'l': map_type,
